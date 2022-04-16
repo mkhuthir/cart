@@ -38,7 +38,7 @@ def generate_launch_description():
 
     xacro_file = os.path.join(gazebo_ros2_control_demos_path,
                               'urdf',
-                              'test_cart_position.xacro.urdf')
+                              'cart_position.urdf')
 
     doc = xacro.parse(open(xacro_file))
     xacro.process_doc(doc)
