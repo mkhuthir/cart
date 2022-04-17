@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>gazebo_ros2_control_demos</name>
+  <name>gz_ros2_control</name>
   <version>0.0.8</version>
-  <description>gazebo_ros2_control_demos</description>
+  <description>gazebo ros2 control</description>
 
   <maintainer email="alejandro@osrfoundation.org">Alejandro Hernandez</maintainer>
 
