@@ -24,6 +24,7 @@ install(DIRECTORY
   launch
   config
   urdf
+  xacro
   DESTINATION share/${PROJECT_NAME}/
 )
 

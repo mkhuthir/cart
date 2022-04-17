@@ -14,13 +14,8 @@ def generate_launch_description():
                 PythonLaunchDescriptionSource([os.path.join(
                     get_package_share_directory('gazebo_ros'), 'launch'), '/gazebo.launch.py']),
              )
-
-    gazebo_ros2_control_demos_path = os.path.join(
-        get_package_share_directory('gz_ros2_control'))
-
-    xacro_file = os.path.join(gazebo_ros2_control_demos_path,
-                              'urdf',
-                              'cart_position.urdf')
+   
+    xacro_file = os.path.join(get_package_share_directory('gz_ros2_control'),'xacro','cart_position.xacro')
 
     doc = xacro.parse(open(xacro_file))
     xacro.process_doc(doc)

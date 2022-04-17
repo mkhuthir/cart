@@ -13,7 +13,7 @@ def generate_launch_description():
     robot_description_content = Command(
         [
             PathJoinSubstitution([FindExecutable(name='xacro')])," ",
-            PathJoinSubstitution([FindPackageShare('gz_ros2_control'),'urdf','gripper_mimic_joint.urdf']),
+            PathJoinSubstitution([FindPackageShare('gz_ros2_control'),'xacro','gripper_mimic_joint.xacro']),
         ]
     )
     

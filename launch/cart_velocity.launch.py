@@ -15,12 +15,8 @@ def generate_launch_description():
                     get_package_share_directory('gazebo_ros'), 'launch'), '/gazebo.launch.py']),
              )
 
-    gazebo_ros2_control_demos_path = os.path.join(
-        get_package_share_directory('gz_ros2_control'))
-
-    xacro_file = os.path.join(gazebo_ros2_control_demos_path,
-                              'urdf',
-                              'cart_velocity.urdf')
+    xacro_file = os.path.join(get_package_share_directory('gz_ros2_control'),'xacro','cart_velocity.xacro')
+    
     doc = xacro.parse(open(xacro_file))
     xacro.process_doc(doc)
     params = {'robot_description': doc.toxml()}

@@ -8,8 +8,7 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.actions import Node
 import xacro
 
-gz_ros2_control_path    = os.path.join(get_package_share_directory('gz_ros2_control'))
-xacro_file              = os.path.join(gz_ros2_control_path,'urdf','cart_effort.urdf')
+xacro_file              = os.path.join(get_package_share_directory('gz_ros2_control'),'xacro','cart_effort.xacro')
 
 doc = xacro.parse(open(xacro_file))
 xacro.process_doc(doc)
