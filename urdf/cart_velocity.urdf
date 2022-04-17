@@ -4,7 +4,9 @@
 <!-- |    EDITING THIS FILE BY HAND IS NOT RECOMMENDED                                 | -->
 <!-- =================================================================================== -->
 <robot name="cartopole">
+  <!-- ****************************************************** World Link *************************************************************** -->
   <link name="world"/>
+  <!-- ****************************************************** slideBar Link ************************************************************ -->
   <link name="slideBar">
     <visual>
       <geometry>
@@ -20,6 +22,7 @@
       <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
     </inertial>
   </link>
+  <!-- ****************************************************** cart Link **************************************************************** -->
   <link name="cart">
     <visual>
       <geometry>
@@ -35,11 +38,13 @@
       <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
     </inertial>
   </link>
+  <!-- ****************************************************** world to slideBar Joint ************************************************** -->
   <joint name="world_to_base" type="fixed">
     <origin rpy="0 0 0" xyz="0 0 1"/>
     <parent link="world"/>
     <child link="slideBar"/>
   </joint>
+  <!-- ****************************************************** slideBar to cart Joint *************************************************** -->
   <joint name="slider_to_cart" type="prismatic">
     <axis xyz="1 0 0"/>
     <origin xyz="0.0 0.0 0.0"/>
@@ -48,24 +53,28 @@
     <limit effort="1000.0" lower="-15" upper="15" velocity="30"/>
     <dynamics damping="0.0" friction="0.0"/>
   </joint>
+  <!-- ****************************************************** IMU Link ***************************************************************** -->
   <link name="imu">
     <inertial>
       <mass value="0.1"/>
       <inertia ixx="1.0" ixy="0" ixz="0" iyy="1.0" iyz="0" izz="1.0"/>
     </inertial>
   </link>
+  <!-- ****************************************************** cart to IMU joint ******************************************************** -->
   <joint name="cart_to_imu" type="fixed">
     <origin xyz="0.0 0.0 0.0"/>
     <parent link="cart"/>
     <child link="imu"/>
     <dynamics damping="0.0" friction="0.0"/>
   </joint>
+  <!-- ****************************************************** imu Gazebo *************************************************************** -->
   <gazebo reference="imu">
     <sensor name="cart_imu_sensor" type="imu">
       <always_on>1</always_on>
       <update_rate>10.0</update_rate>
     </sensor>
   </gazebo>
+  <!-- ****************************************************** Gazebo ROS2 Control ****************************************************** -->
   <ros2_control name="GazeboSystem" type="system">
     <hardware>
       <plugin>gazebo_ros2_control/GazeboSystem</plugin>
@@ -92,9 +101,11 @@
       <state_interface name="linear_acceleration.z"/>
     </sensor>
   </ros2_control>
+  <!-- ****************************************************** Gazebo ROS2 Plugin ******************************************************* -->
   <gazebo>
     <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
-      <parameters>/home/mkhuthir/ws/install/gazebo_ros2_control_demos/share/gazebo_ros2_control_demos/config/cartpole_controller_velocity.yaml</parameters>
+      <parameters>/opt/ros/galactic/share/gazebo_ros2_control_demos/config/cartpole_controller_velocity.yaml</parameters>
     </plugin>
   </gazebo>
+  <!-- ****************************************************** End ********************************************************************** -->
 </robot>
