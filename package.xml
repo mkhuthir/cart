@@ -4,13 +4,11 @@
   <version>0.0.8</version>
   <description>gazebo ros2 control</description>
 
-  <maintainer email="alejandro@osrfoundation.org">Alejandro Hernandez</maintainer>
+  <maintainer email="mkhuthir@gmail.com">Muthanna Alwahash</maintainer>
 
   <license>Apache License 2.0</license>
-
-  <url type="website">http://ros.org/wiki/gazebo_ros_control</url>
-  <url type="bugtracker">https://github.com/ros-simulation/gazebo_ros2_control/issues</url>
-  <url type="repository">https://github.com/ros-simulation/gazebo_ros2_control</url>
+  
+  <url type="repository">https://github.com/mkhuthir/gz_ros2_control</url>
 
   <author>Alejandro Hernández</author>
 

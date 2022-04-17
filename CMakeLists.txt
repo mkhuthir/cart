@@ -5,6 +5,7 @@ project(gz_ros2_control)
 if(NOT CMAKE_C_STANDARD)
   set(CMAKE_C_STANDARD 11)
 endif()
+
 # Default to C++14
 if(NOT CMAKE_CXX_STANDARD)
   set(CMAKE_CXX_STANDARD 14)
@@ -23,31 +24,30 @@ find_package(std_msgs REQUIRED)
 install(DIRECTORY
   launch
   config
-  urdf
   xacro
   DESTINATION share/${PROJECT_NAME}/
 )
 
-add_executable(position examples/position.cpp)
+add_executable(position src/position.cpp)
 ament_target_dependencies(position
   rclcpp
   rclcpp_action
   control_msgs
 )
 
-add_executable(velocity examples/velocity.cpp)
+add_executable(velocity src/velocity.cpp)
 ament_target_dependencies(velocity
   rclcpp
   std_msgs
 )
 
-add_executable(effort examples/effort.cpp)
+add_executable(effort src/effort.cpp)
 ament_target_dependencies(effort
   rclcpp
   std_msgs
 )
 
-add_executable(gripper examples/gripper)
+add_executable(gripper src/gripper.cpp)
 ament_target_dependencies(gripper
   rclcpp
   std_msgs
