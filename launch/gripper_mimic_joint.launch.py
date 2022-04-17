@@ -12,34 +12,26 @@ def generate_launch_description():
 
     robot_description_content = Command(
         [
-            PathJoinSubstitution([FindExecutable(name='xacro')]),
-            " ",
-            PathJoinSubstitution(
-                [FindPackageShare(
-                    'gz_ros2_control'),
-                    'urdf',
-                    'gripper_mimic_joint.urdf']
-            ),
+            PathJoinSubstitution([FindExecutable(name='xacro')])," ",
+            PathJoinSubstitution([FindPackageShare('gz_ros2_control'),'urdf','gripper_mimic_joint.urdf']),
         ]
     )
-    robot_description = {"robot_description": robot_description_content}
-
+    
     node_robot_state_publisher = Node(
-        package='robot_state_publisher',
-        executable='robot_state_publisher',
-        output='screen',
-        parameters=[robot_description]
+        package=    'robot_state_publisher',
+        executable= 'robot_state_publisher',
+        output=     'screen',
+        parameters= [{"robot_description": robot_description_content}]
     )
 
     gazebo = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            [FindPackageShare("gazebo_ros"), "/launch", "/gazebo.launch.py"]
-        ),
+        PythonLaunchDescriptionSource([FindPackageShare("gazebo_ros"), "/launch", "/gazebo.launch.py"])
     )
 
-    spawn_entity = Node(package='gazebo_ros', executable='spawn_entity.py',
-                        arguments=['-topic', 'robot_description','-entity', 'gripper'],
-                        output='screen')
+    spawn_entity = Node(package=    'gazebo_ros', 
+                        executable= 'spawn_entity.py',
+                        arguments=  ['-topic', 'robot_description','-entity', 'gripper'],
+                        output=     'screen')
 
     load_joint_state_controller = ExecuteProcess(
         cmd=['ros2', 'control', 'load_controller', '--set-state', 'start','joint_state_broadcaster'],
