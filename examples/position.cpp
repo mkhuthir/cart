@@ -5,7 +5,6 @@
 
 #include "rclcpp/rclcpp.hpp"
 #include "rclcpp_action/rclcpp_action.hpp"
-
 #include "control_msgs/action/follow_joint_trajectory.hpp"
 
 std::shared_ptr<rclcpp::Node> node;

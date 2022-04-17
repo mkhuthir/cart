@@ -4,7 +4,6 @@
 #include <vector>
 
 #include "rclcpp/rclcpp.hpp"
-
 #include "std_msgs/msg/float64_multi_array.hpp"
 
 std::shared_ptr<rclcpp::Node> node;
