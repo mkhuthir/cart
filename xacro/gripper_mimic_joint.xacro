@@ -24,6 +24,10 @@
     </inertial>
   </link>
 
+  <gazebo reference="base">
+    <material>Gazebo/Orange</material>
+  </gazebo>
+
 <!-- ****************************************************** finger_right Link ******************************************************** -->
 
   <link name="finger_right">
@@ -42,6 +46,10 @@
     </inertial>
   </link>
 
+  <gazebo reference="finger_right">
+    <material>Gazebo/Red</material>
+  </gazebo>
+
 <!-- ****************************************************** finger_left Link ********************************************************* -->
 
   <link name="finger_left">
@@ -59,6 +67,10 @@
       <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
     </inertial>
   </link>
+
+  <gazebo reference="finger_left">
+    <material>Gazebo/Red</material>
+  </gazebo>
 
 <!-- ****************************************************** world to base Joint ****************************************************** -->
 

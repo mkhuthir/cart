@@ -24,6 +24,10 @@
     </inertial>
   </link>
 
+  <gazebo reference="slideBar">
+    <material>Gazebo/Orange</material>
+  </gazebo>
+
 <!-- ****************************************************** cart Link **************************************************************** -->
 
   <link name="cart">
@@ -42,6 +46,10 @@
     </inertial>
   </link>
 
+  <gazebo reference="cart">
+    <material>Gazebo/Red</material>
+  </gazebo>
+  
   <!-- ****************************************************** world to slideBar Joint ************************************************** -->
 
   <joint name="world_to_base" type="fixed">
