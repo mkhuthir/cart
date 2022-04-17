@@ -2,7 +2,11 @@
 
 <robot name="gripper"  xmlns:xacro="http://ros.org/wiki/xacro">
 
+<!-- ****************************************************** World Link *************************************************************** -->
+
   <link name="world"/>
+
+<!-- ****************************************************** Base Link **************************************************************** -->
 
   <link name="base">
     <visual>
@@ -20,6 +24,8 @@
     </inertial>
   </link>
 
+<!-- ****************************************************** finger_right Link ******************************************************** -->
+
   <link name="finger_right">
     <visual>
       <geometry>
@@ -35,6 +41,8 @@
       <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
     </inertial>
   </link>
+
+<!-- ****************************************************** finger_left Link ********************************************************* -->
 
   <link name="finger_left">
     <visual>
@@ -52,11 +60,15 @@
     </inertial>
   </link>
 
+<!-- ****************************************************** world to base Joint ****************************************************** -->
+
   <joint name="world_to_base" type="fixed">
     <origin rpy="0 0 0" xyz="0 0 0"/>
     <parent link="world"/>
     <child link="base"/>
   </joint>
+
+<!-- ****************************************************** right_finger Joint ******************************************************* -->
 
   <joint name="right_finger_joint" type="prismatic">
     <axis xyz="0 1 0"/>
@@ -66,6 +78,8 @@
     <limit effort="1000.0" lower="0" upper="0.38" velocity="10"/>
   </joint>
 
+<!-- ****************************************************** left_finger Joint ******************************************************** -->
+
   <joint name="left_finger_joint" type="prismatic">
     <mimic joint="right_finger_joint"/>
     <axis xyz="0 1 0"/>
@@ -74,7 +88,9 @@
     <child link="finger_left"/>
     <limit effort="1000.0" lower="0" upper="0.38" velocity="10"/>
   </joint>
-  
+
+<!-- ****************************************************** Gazebo ROS2 Control ****************************************************** -->
+
   <ros2_control name="GazeboSystem" type="system">
   
     <hardware>
@@ -101,9 +117,14 @@
   
   </ros2_control>
 
+<!-- ****************************************************** Gazebo ROS2 Plugin ******************************************************* -->
+
   <gazebo>
     <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
       <parameters>$(find gazebo_ros2_control_demos)/config/gripper_controller.yaml</parameters>
     </plugin>
   </gazebo>
+
+<!-- ****************************************************** End ********************************************************************** -->
+
 </robot>

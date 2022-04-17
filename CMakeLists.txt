@@ -27,27 +27,27 @@ install(DIRECTORY
   DESTINATION share/${PROJECT_NAME}/
 )
 
-add_executable(example_position examples/example_position.cpp)
-ament_target_dependencies(example_position
+add_executable(position examples/position.cpp)
+ament_target_dependencies(position
   rclcpp
   rclcpp_action
   control_msgs
 )
 
-add_executable(example_velocity examples/example_velocity.cpp)
-ament_target_dependencies(example_velocity
+add_executable(velocity examples/velocity.cpp)
+ament_target_dependencies(velocity
   rclcpp
   std_msgs
 )
 
-add_executable(example_effort examples/example_effort.cpp)
-ament_target_dependencies(example_effort
+add_executable(effort examples/effort.cpp)
+ament_target_dependencies(effort
   rclcpp
   std_msgs
 )
 
-add_executable(example_gripper examples/example_gripper)
-ament_target_dependencies(example_gripper
+add_executable(gripper examples/gripper)
+ament_target_dependencies(gripper
   rclcpp
   std_msgs
 )
@@ -60,7 +60,7 @@ if(BUILD_TESTING)
 endif()
 
 ## Install
-install(TARGETS example_position example_velocity example_effort example_gripper
+install(TARGETS position velocity effort gripper
   DESTINATION lib/${PROJECT_NAME}
 )
 

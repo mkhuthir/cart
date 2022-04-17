@@ -2,7 +2,11 @@
 
 <robot name="cartopole" xmlns:xacro="http://ros.org/wiki/xacro">
 
+<!-- ****************************************************** World Link *************************************************************** -->
+
   <link name="world"/>
+
+<!-- ****************************************************** slideBar Link ************************************************************ -->
 
   <link name="slideBar">
     <visual>
@@ -20,6 +24,8 @@
     </inertial>
   </link>
 
+<!-- ****************************************************** cart Link **************************************************************** -->
+
   <link name="cart">
     <visual>
       <geometry>
@@ -36,11 +42,15 @@
     </inertial>
   </link>
 
+<!-- ****************************************************** world to slideBar Joint ************************************************** -->
+
   <joint name="world_to_base" type="fixed">
     <origin rpy="0 0 0" xyz="0 0 1"/>
     <parent link="world"/>
     <child link="slideBar"/>
   </joint>
+
+<!-- ****************************************************** slideBar to cart Joint *************************************************** -->
 
   <joint name="slider_to_cart" type="prismatic">
     <axis xyz="1 0 0"/>
@@ -50,6 +60,8 @@
     <limit effort="1000.0" lower="-15" upper="15" velocity="30"/>
     <dynamics damping="0.0" friction="0.0"/>
   </joint>
+
+<!-- ****************************************************** Gazebo ROS2 Control ****************************************************** -->
 
   <ros2_control name="GazeboSystem" type="system">
     
@@ -71,9 +83,14 @@
 
   </ros2_control>
 
+<!-- ****************************************************** Gazebo ROS2 Plugin ******************************************************* -->
+
   <gazebo>
     <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
       <parameters>$(find gazebo_ros2_control_demos)/config/cartpole_controller.yaml</parameters>
     </plugin>
   </gazebo>
+
+<!-- ****************************************************** End ********************************************************************** -->
+
 </robot>
