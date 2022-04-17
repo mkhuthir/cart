@@ -102,7 +102,7 @@
   <!-- ****************************************************** Gazebo ROS2 Plugin ******************************************************* -->
   <gazebo>
     <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
-      <parameters>/opt/ros/galactic/share/gazebo_ros2_control_demos/config/gripper_controller.yaml</parameters>
+      <parameters>/home/mkhuthir/ws/install/gz_ros2_control/share/gz_ros2_control/config/gripper_controller.yaml</parameters>
     </plugin>
   </gazebo>
   <!-- ****************************************************** End ********************************************************************** -->
