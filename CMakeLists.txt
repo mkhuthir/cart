@@ -22,9 +22,12 @@ find_package(rclcpp_action REQUIRED)
 find_package(std_msgs REQUIRED)
 
 install(DIRECTORY
-  launch
+  
   config
+  launch
+  scripts
   xacro
+  
   DESTINATION share/${PROJECT_NAME}/
 )
 

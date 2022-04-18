@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>gz_ros2_control</name>
-  <version>0.0.8</version>
+  <version>0.1.0</version>
   <description>gazebo ros2 control</description>
 
   <maintainer email="mkhuthir@gmail.com">Muthanna Alwahash</maintainer>
