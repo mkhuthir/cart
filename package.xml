@@ -10,7 +10,7 @@
   
   <url type="repository">https://github.com/mkhuthir/gz_ros2_control</url>
 
-  <author>Alejandro Hernández</author>
+  <author>Muthanna Alwahash</author>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 

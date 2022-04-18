@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5.0)
+cmake_minimum_required(VERSION 3.8)
 project(gz_ros2_control)
 
 # Default to C11
