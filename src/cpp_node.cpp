@@ -1,5 +1,5 @@
-include "cpp_header.cpp"
-include "rclcpp/rclcpp.hpp"
+#include "gz_ros2_control/cpp_header.cpp"
+#include "rclcpp/rclcpp.hpp"
 
 int main(int argc, char **argv)
 {
