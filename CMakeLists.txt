@@ -15,13 +15,19 @@ if(NOT WIN32)
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
-find_package(ament_cmake REQUIRED)
-find_package(ament_cmake_python REQUIRED)
+# Common Packages
 find_package(control_msgs REQUIRED)
-find_package(rclcpp REQUIRED)
-find_package(rclpy REQUIRED)
-find_package(rclcpp_action REQUIRED)
 find_package(std_msgs REQUIRED)
+
+# C++ packages
+find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(rclcpp_action REQUIRED)
+
+# Python packages
+find_package(ament_cmake_python REQUIRED)
+find_package(rclpy REQUIRED)
+
 
 include_directories(include)
 
@@ -35,33 +41,34 @@ install(DIRECTORY
   DESTINATION share/${PROJECT_NAME}/
 )
 
+# C++ Executables
 add_executable(position src/position.cpp)
-ament_target_dependencies(position
+ament_target_dependencies( position
   rclcpp
   rclcpp_action
   control_msgs
 )
 
 add_executable(velocity src/velocity.cpp)
-ament_target_dependencies(velocity
+ament_target_dependencies( velocity
   rclcpp
   std_msgs
 )
 
 add_executable(effort src/effort.cpp)
-ament_target_dependencies(effort
+ament_target_dependencies( effort
   rclcpp
   std_msgs
 )
 
 add_executable(gripper src/gripper.cpp)
-ament_target_dependencies(gripper
+ament_target_dependencies( gripper
   rclcpp
   std_msgs
 )
 
 add_executable(cpp_node src/cpp_node.cpp)
-ament_target_dependencies(cpp_node 
+ament_target_dependencies( cpp_node 
 rclcpp
 )
 
@@ -72,7 +79,7 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
-## Install
+## Install C++ Modules
 install(TARGETS 
   
   position 
@@ -84,13 +91,13 @@ install(TARGETS
   DESTINATION lib/${PROJECT_NAME}
 )
 
-# Install Python modules
+# Install Python Modules
 ament_python_install_package(${PROJECT_NAME})
 
-# Install Python executables
 install(PROGRAMS
 
-  scripts/py_node.py
+  scripts/py_effort.py
+  scripts/py_velocity.py
 
   DESTINATION lib/${PROJECT_NAME}
 )

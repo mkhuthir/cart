@@ -2,7 +2,6 @@
 
 import rclpy
 from rclpy.node import Node
-
 from std_msgs.msg import Float64MultiArray    
 
 
@@ -12,16 +11,16 @@ class cartPublisher(Node):
     def __init__(self):
         super().__init__('my_node')
         self.publisher_ = self.create_publisher(Float64MultiArray, '/effort_controllers/commands', 10)
-        timer_period = 1  # seconds
+        timer_period = 3  # seconds
         self.timer = self.create_timer(timer_period, self.timer_callback)
-        self.i = 0
+        self.i = 30.0
 
     def timer_callback(self):
         msg = Float64MultiArray()
-        msg.data=[[0,100]]
+        msg.data=[self.i]
         self.publisher_.publish(msg)
         self.get_logger().info('Publishing')
-        self.i += 10
+        self.i *= -1
 
 
 def main(args=None):
