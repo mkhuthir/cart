@@ -96,8 +96,8 @@ ament_python_install_package(${PROJECT_NAME})
 
 install(PROGRAMS
 
-  scripts/py_effort.py
-  scripts/py_velocity.py
+  scripts/effort.py
+  scripts/velocity.py
 
   DESTINATION lib/${PROJECT_NAME}
 )
