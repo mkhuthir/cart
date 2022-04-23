@@ -17,8 +17,8 @@ class cartPublisher(Node):
         self.i = 0
 
     def timer_callback(self):
-        msg = Float64MultiArray
-        msg.data = 100
+        msg = Float64MultiArray()
+        msg.data=[[0,100]]
         self.publisher_.publish(msg)
         self.get_logger().info('Publishing')
         self.i += 10
