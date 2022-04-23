@@ -21,7 +21,7 @@ def main(args=None):
     node.get_logger().info("Hello from node")
     
     node.pub.publish(msg)
-    node.get_logger().info('Publishing: "%s"' % msg.data)
+    node.get_logger().info('Published: "%s"' % msg.data)
 
     rclpy.spin(node)
     
