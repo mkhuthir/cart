@@ -18,13 +18,20 @@ def main(args=None):
 
     node = cartPub()
         
-    node.get_logger().info("Hello from node")
-    
-    node.pub.publish(msg)
-    node.get_logger().info('Published: "%s"' % msg.data)
+    node.get_logger().info("Node Created !")
 
-    rclpy.spin(node)
-    
+    node.create_rate(1) # Rate in Hz
+
+    try:
+        while rclpy.ok():
+            
+            node.pub.publish(msg)
+            node.get_logger().info('Published: "%s"' % msg.data)
+            rclpy.spin_once(node)
+
+    except KeyboardInterrupt:
+        print('Keyboard interrupted !')
+        
     node.destroy_node()
     rclpy.shutdown()
 
