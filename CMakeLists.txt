@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(gz_ros2_control)
+project(cart)
 
 # Default to C11
 if(NOT CMAKE_C_STANDARD)
