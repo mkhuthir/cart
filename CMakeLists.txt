@@ -61,12 +61,6 @@ ament_target_dependencies( effort
   std_msgs
 )
 
-add_executable(gripper src/gripper.cpp)
-ament_target_dependencies( gripper
-  rclcpp
-  std_msgs
-)
-
 add_executable(cpp_node src/cpp_node.cpp)
 ament_target_dependencies( cpp_node 
 rclcpp
@@ -85,7 +79,6 @@ install(TARGETS
   position 
   velocity 
   effort 
-  gripper
   cpp_node
 
   DESTINATION lib/${PROJECT_NAME}
