@@ -89,6 +89,7 @@ ament_python_install_package(${PROJECT_NAME})
 
 install(PROGRAMS
 
+  scripts/py_node.py
   scripts/effort.py
   scripts/velocity.py
 
